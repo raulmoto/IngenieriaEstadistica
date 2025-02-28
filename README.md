@@ -6,7 +6,7 @@ Este repositorio contiene una serie de ejercicios y ejemplos de estadística apl
 El objetivo es proporcionar implementaciones prácticas que faciliten la comprensión de los conceptos fundamentales de la estadística, utilizando bibliotecas populares como `NumPy`, `Pandas`, `Matplotlib` y `Scipy`.
 
 ## 👨‍💻 Autor
-**[Tu Nombre]**  
+**Raúl Desiderio Moto Buambo**  
 Estudiante de Ingeniería Informática | Desarrollo de sistemas expertos en Java e IA 
 
 ## 🔄 Contenido del Repositorio

@@ -169,6 +169,28 @@ graficoDispersiion = plt.scatter(mpg.horsepower,mpg.acceleration)
 
 
 # In[ ]:
+mpg = mpg.dropna() #/*elimnamos los datos vacios nan*/
+X = mpg.horsepower # entrenamos con los datos de potencia
+y = mpg.acceleration # entrenamos con los datos de aceleracion
+
+#estamos entrenado los datos en esta parte
+X_train, X_test, y_train, y_test = train_test_split(
+                                        X.values.reshape(-1,1),
+                                        y.values.reshape(-1,1),
+                                        train_size   = 0.95,
+                                        random_state = 1234,
+                                        shuffle      = True
+                                    )
+
+# Creación del modelo
+
+modelo = LinearRegression()
+modelo.fit(X = X_train.reshape(-1, 1), y = y_train)
+
+X_train = sm.add_constant(X_train, prepend=True)
+modelo = sm.OLS(endog=y_train, exog=X_train,)
+modelo = modelo.fit()
+print(modelo.summary())
 
 
 

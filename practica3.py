@@ -137,3 +137,38 @@ plt.show()
 
 
 """
+
+# Probabilidad de más de 4 accesos por minuto  (P(X > 4))
+from scipy.stats import poisson
+
+lambda_laboral = 4.7
+prob_mas_4 = 1 - poisson.cdf(4, lambda_laboral)  # P(X > 4) = 1 - P(X ≤ 4)
+print(f"P(X > 4): {prob_mas_4:.4f} ({(prob_mas_4 * 100):.2f}%)")
+
+#¿El 50% de los minutos tiene menos de 2 accesos?
+prob_menos_2 = poisson.cdf(1, lambda_laboral)
+print(f"P(X < 2): {prob_menos_2:.4f} ({(prob_menos_2 * 100):.2f}%)")
+print(f"¿Es cierto que P(X < 2) ≈ 50%? {prob_menos_2 >= 0.5}")
+
+#mediana
+mediana = poisson.ppf(0.5, lambda_laboral)
+print(f"Mediana (accesos/min): {mediana}")
+
+# Probabilidad de más de 1 minuto sin accesos (fin de semana)
+
+lambda_finde = 4
+prob_sin_accesos = np.exp(-lambda_finde * 1)  # t = 1 minuto
+print(f"P(T > 1 min): {prob_sin_accesos:.4f} ({(prob_sin_accesos * 100):.2f}%)")
+
+
+#gafica de referencia
+import seaborn as sns
+
+# Gráfica de Poisson (lambda = 4.7)
+x = np.arange(0, 15)
+pmf = poisson.pmf(x, lambda_laboral)
+plt.bar(x, pmf)
+plt.title("Distribución de Poisson ($\lambda = 4.7$)")
+plt.xlabel("Accesos por minuto")
+plt.ylabel("Probabilidad")
+plt.show()
